@@ -1,0 +1,118 @@
+---
+title:
+header-includes:
+ - \usepackage{bbm}
+ - \usepackage{times}
+ - \usepackage{setspace}
+ - \onehalfspacing
+ - \usepackage{lscape}
+ - \usepackage{indentfirst}
+ - \usepackage[brazil]{babel}
+ - \usepackage{graphicx,psfrag}
+ - \usepackage[T1]{fontenc}
+ - \usepackage{times, amsmath, amsfonts, amssymb, amsthm}
+ - \usepackage{xcolor}
+ - \usepackage{url}
+ - \usepackage[skip=2pt,size=normalsize]{caption}
+ - \captionsetup{labelsep=endash, format=hang, width=\textwidth} 
+ - \usepackage{placeins}
+ - \usepackage[labelfont=bf]{caption}
+ - \usepackage{sectsty}
+ - \sectionfont{\fontsize{12}{15}\selectfont}
+ - \subsectionfont{\fontsize{12}{15}\selectfont}
+ - \usepackage{enumitem}
+ - \usepackage{float}
+ - \floatplacement{figure}{H}
+ - \floatplacement{table}{H}
+ - \linespread{1.5}
+ - \usepackage{fancyhdr}
+ - \pagestyle{fancy}
+ - \lhead{}
+ - \chead{}
+ - \rhead{\thepage}
+ - \lfoot{}
+ - \cfoot{}
+ - \rfoot{}
+ - \renewcommand{\headrulewidth}{0pt}
+ - \addto\captionsbrazil{\renewcommand{\contentsname}{}}
+ - \addto\captionsbrazil{\renewcommand{\listfigurename}{}}
+ - \addto\captionsbrazil{\renewcommand{\listtablename}{}}
+ - \addto\captionsbrazil{\renewcommand{\bibname}{}}
+output: pdf_document
+keep_tex: true
+fontsize: 12pt
+geometry: margin=1in
+spacing: onehalfspacing 
+endnote: no
+editor_options: 
+  chunk_output_type: console
+---
+
+\newpage
+\thispagestyle{empty}
+\begin{singlespace}
+\noindent \uppercase{Primeira Semana - Desafio}, o desafio apresentado consiste em desenvolver um programa que ajude as crianças aprenderem a multiplicar dois números (de 1 a 10, a famosa tabuada).  
+
+
+\newpage
+
+#1. Explicação do Desafio  
+
+Crie um programa que permita com que crianças treinem tabuada
+
+**Requisitos**:
+
+* O programa deve sortear dois números aleatórios, de 1 a 10 e solicitar que a criança faça a multiplicação;  
+
+* Caso a criança acerte, o programa dá parabéns à criança e lança um novo desafio;  
+
+* Caso a criança erre, o programa mostra a resposta e lança um novo desafio;e  
+
+* O programa contabiliza o número de acertos, em 10 tentativas. 
+
+```{r}
+
+cat("Olá!Vamos ver como está o seu conhecimento com a tabuada?!", "\n")
+nome = readline("Qual o seu nome?")
+
+for (i in 10) {
+  pontos = 0
+  tabuada = function()
+{
+  N1<-sample(1:10, 1, replace = T)
+  N2 <- sample(1:10,1, replace = T)
+  valor = N1*N2
+  cat (nome,",", "Calcule a tabuada de:", N1, "x", N2)
+  resposta = readline("Digite o seu valor:")
+  if (resposta == valor){
+    pontos = pontos + 1
+  return("Parabéns, você acertou!!!")}
+  else{
+    return("Não foi dessa vez, mas não desista")
+  }
+  
+}}
+
+tabuada()
+```
+
+```{r}
+cat("Olá!Vamos ver como está o seu conhecimento com a tabuada?!", "\n")
+  nome = readline("Qual o seu nome?")
+  
+pontos = 0
+for (i in 10) {
+  N1<-sample(1:10, 1, replace = T)
+  N2 <- sample(1:10,1, replace = T)
+  valor = N1*N2
+  resposta = cat("Calcule a tabuada de:", N1, "x", N2)
+  if (resposta == valor){
+    pontos = pontos + 1
+  return("Parabéns, você acertou!!!")}
+  else{
+    return("Não foi dessa vez, mas não desista")
+  }
+  
+}
+```
+
