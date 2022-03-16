@@ -1,0 +1,216 @@
+---
+title:
+header-includes:
+ - \usepackage{bbm}
+ - \usepackage{times}
+ - \usepackage{setspace}
+ - \onehalfspacing
+ - \usepackage{lscape}
+ - \usepackage{indentfirst}
+ - \usepackage[brazil]{babel}
+ - \usepackage{graphicx,psfrag}
+ - \usepackage[T1]{fontenc}
+ - \usepackage{times, amsmath, amsfonts, amssymb, amsthm}
+ - \usepackage{xcolor}
+ - \usepackage{url}
+ - \usepackage[skip=2pt,size=normalsize]{caption}
+ - \captionsetup{labelsep=endash, format=hang, width=\textwidth} 
+ - \usepackage{placeins}
+ - \usepackage[labelfont=bf]{caption}
+ - \usepackage{sectsty}
+ - \sectionfont{\fontsize{12}{15}\selectfont}
+ - \subsectionfont{\fontsize{12}{15}\selectfont}
+ - \usepackage{enumitem}
+ - \usepackage{float}
+ - \floatplacement{figure}{H}
+ - \floatplacement{table}{H}
+ - \linespread{1.5}
+ - \usepackage{fancyhdr}
+ - \pagestyle{fancy}
+ - \lhead{}
+ - \chead{}
+ - \rhead{\thepage}
+ - \lfoot{}
+ - \cfoot{}
+ - \rfoot{}
+ - \renewcommand{\headrulewidth}{0pt}
+ - \addto\captionsbrazil{\renewcommand{\contentsname}{}}
+ - \addto\captionsbrazil{\renewcommand{\listfigurename}{}}
+ - \addto\captionsbrazil{\renewcommand{\listtablename}{}}
+ - \addto\captionsbrazil{\renewcommand{\bibname}{}}
+output: pdf_document
+keep_tex: true
+fontsize: 12pt
+geometry: margin=1in
+spacing: onehalfspacing 
+endnote: no
+editor_options: 
+  chunk_output_type: console
+---
+
+\newpage
+\thispagestyle{empty}
+\begin{singlespace}
+\noindent \uppercase{Primeira Semana}, na primeira semana do Curso, é abordado os **Conceitos Básicos**, dentre eles: operações simples; objetos e funções; tipos de dados (números inteiros e caracteres); tipos de dados (boolean, complex e raw); regras de coerção de dados; funções e seus argumentos; e, criando funções em R. Na **hora do recreio** o foco consiste em aprender duas funções, sendo elas: *cat* e *readline*. E o **desafio da semana** remete no desenvolvimento de um programa que permita obter resultados da famosa "tabuada". 
+
+\newpage
+
+#1. Operações simples (usando o R como calculadora)  
+
+O **R** é como uma grande **calculadora científica**, porém, diferente das calculadoras convencionais, ao invés de apertas os botões, os comandos são escritos pelo progromador. 
+
+R como calculadora:
+```{r}
+#Soma
+25 + 125 #150
+
+#Criar uma sequência de número 
+seq(1,200,by=2) #sequência de 1 até 100 de 2 em 2
+
+#Multiplicação
+15*5 #75
+
+#Divisão 
+200/4 #40
+
+#Exponencial
+2^4 #16
+
+#Descobrir o resto da divisão
+6%%2 #0
+
+#APlicação de uma conta
+3+2*1-2+1 #4
+
+```
+
+#2. Objetos e funções  
+
+No R, uma variável é um objeto, ou seja, é uma estrutura predefinida para "receber" algum valor ou strings (textos). De modo mais técnico, objeto (ou variável) é um pequeno espaço na memória do seu computador onde o R armazenará um valor ou o resultado de um comando, utilizando um nome que é pré-definido pelo programador. 
+
+```{r}
+#Para criar uma atribuição, pode-se utilizar o símbolo "=" ou "<-": 
+a = 5 #
+a
+
+a <- 5 
+a
+
+#Objeto como conjunto de caracteres:
+a = "João" #strings
+
+#Valor buliano (True ou false):
+a= TRUE #OU T
+A = FALSE #OU F
+
+#Um dataframe é uma tabela organizada em uma determinada estrutura com linhas e colunas. Aplicando um dataframe utilizando o banco de dados do R cars:
+
+a = cars #ou a <- cars
+
+#Lista: 
+a = list(1, "a", c(1,2,3))
+```
+
+
+#3. Tipos de dados: números inteiros e caracteres  
+
+```{r}
+vector = 1:10 #lista os números de 1 a 10
+vector2 = c(1,2,3,4,5,6,7,8,9,10) #numérico
+vector3 = c(1L,2L,3L,4L,5L,6L,7L,8L,9L,10L) #colocar o L transformar para integral
+vector4 = c("João", "Erica", "Gigio") #string ou caracteres
+
+```
+
+#4. Tipos de dados: boolean, complex e raw 
+
+```{r}
+#Operadores lógicos (boolean), são valores que assumem resposta true ou false
+
+vector7 = c(T,F,T) #true, false, true (lembrando que o R diferencia maiuscúlo de minúsculo)
+
+#Operações com números complexos:
+x = 3+4i
+typeof(x) #indica o tipo do número
+
+# números Raw = crú
+var.a = intToBits(1)
+```
+
+#5. Regras de coerção de dados  
+
+```{r}
+#Regra de transformação no R:
+a=c(1,2,3)
+typeof(a) #para descobrir o tipo que o vetor é
+
+b=c(1,2,"3")
+typeof(b) #character
+
+#Se você tem número e caracteres, transforme para caracter
+
+a = c(1,2,T)
+typeof(a) #neste caso, ele converteu o T (true) para 1, por isso ele classifica como double.
+
+b = c(1,"a", T)
+typeof(b)
+```
+
+
+#6. Funções e seus argumentos  
+
+```{r}
+#Função:
+round(5.4) #arredondamento --> 5
+round(5.5) #arredondamento --> 6
+
+#sequencia de números
+a = 1:5
+b=mean(a)
+b #3
+
+#string
+b = nchar("Joao") #número de caracteres
+b #4
+
+#dataframe
+cars
+View(cars) #visualização do dataframe 
+
+#Argumento pode ser resultado de uma função:
+a=1:6
+b=round(mean(a)) #média 3.5, ao usar o round ele arredondada para cima, dando valor 4
+b
+
+#Argumento para arredondar o número de digitos
+b=round(2.584321, digits = 4)
+b #2.5843
+```
+
+#7. Criando funções em R  
+
+Funções "encapsulam" uma sequência de comandos e instruções. Sendo uma estrutura nomeada, que recebe parâmetros para iniciar sua execução e retorna um resultado ao final. 
+
+```{r}
+#Função é um conjunto de códigos que armaneza comandos:
+
+##Função sem argumento
+escreve.nome = function()
+{
+  nome = readline("Qual o seu nome?")
+  cat ("Seu nomé:", nome)
+}
+
+#para chamar a função:
+escreve.nome()
+
+#Função com argumento:
+multiplica.por.dois = function(numero)
+{dobro = numero*2
+return(dobro)
+}
+
+resposta = multiplica.por.dois(4)
+resposta
+```
+

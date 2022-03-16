@@ -51,17 +51,25 @@ editor_options:
 \newpage
 \thispagestyle{empty}
 \begin{singlespace}
-\noindent \uppercase{Primeira Semana}, na primeira semana do Curso, é abordado os **Conceitos Básicos**, dentre eles: operações simples; objetos e funções; tipos de dados (números inteiros e caracteres); tipos de dados (boolean, complex e raw); regras de coerção de dados; funções e seus argumentos; e, criando funções em R. Na **hora do recreio** o foco consiste em aprender duas funções, sendo elas: *cat* e *readline*. E o **desafio da semana** remete no desenvolvimento de um programa que permita obter resultados da famosa "tabuada". 
+\noindent \uppercase{Segunda Semana}, na segunda semana do Curso, é abordado sobre **Vetores**, **Matrizes**, **Factors**, **List**, **Operadores lógicos, condicionais e loops** e, **funções**. 
+Na **hora do recreio** o foco consiste em aprender duas funções, sendo elas: *cat* e *readline*. E o **desafio da semana** remete no desenvolvimento de um programa que permita o estudante a aprender as regras de acentuação. 
+
 
 \newpage
 
-#1. Operações simples (usando o R como calculadora)  
+#1. Vetores  
 
-O **R** é como uma grande **calculadora científica**, porém, diferente das calculadoras convencionais, ao invés de apertas os botões, os comandos são escritos pelo progromador. 
+O **vetor** é como uma sequência de elementos do mesmo tipo. 
 
-R como calculadora:
 ```{r}
-#Soma
+#vetor a
+a <- c(1,2,3,4)
+
+#vetor b
+b <- c(2,4,5,6)
+
+#soma de vetores:
+c <- a + b
 25 + 125 #150
 
 #Criar uma sequência de número 
@@ -209,6 +217,7 @@ multiplica.por.dois = function(numero)
 {dobro = numero*2
 return(dobro)
 }
+
 resposta = multiplica.por.dois(4)
 resposta
 ```

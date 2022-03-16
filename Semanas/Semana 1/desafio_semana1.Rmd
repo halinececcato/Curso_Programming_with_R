@@ -71,29 +71,31 @@ Crie um programa que permita com que crianças treinem tabuada
 * O programa contabiliza o número de acertos, em 10 tentativas. 
 
 ```{r}
-
+#Identificação do jogador
 cat("Olá!Vamos ver como está o seu conhecimento com a tabuada?!", "\n")
 nome = readline("Qual o seu nome?")
+cat("Farei 10 perguntas e ao final veremos quantos pontos você fez.")
 
-for (i in 10) {
-  pontos = 0
-  tabuada = function()
-{
-  N1<-sample(1:10, 1, replace = T)
-  N2 <- sample(1:10,1, replace = T)
-  valor = N1*N2
-  cat (nome,",", "Calcule a tabuada de:", N1, "x", N2)
+#Sorteio dos números
+pontos <- 0
+for (i in 1:10){
+  N1 <- sample(1:10,1)
+  N2 <- sample(1:10,1)
+  tabuada <- N1*N2
+  cat (nome,"Calcule a tabuada de:", N1, "x", N2, "\n")
   resposta = readline("Digite o seu valor:")
-  if (resposta == valor){
-    pontos = pontos + 1
-  return("Parabéns, você acertou!!!")}
-  else{
-    return("Não foi dessa vez, mas não desista")
+  resposta.conv= as.numeric(resposta)
+  if (resposta.conv == tabuada){
+    return("Parabéns, você acertou!!!", "\nVamos para a próxima?!")
+    pontos <- pontos +1
+    else{
+    return("Não foi dessa vez, mas não desista", "\nA resposta correta é:" tabuada, "Vamos para a próxima?!")
   }
-  
-}}
+}
 
-tabuada()
+cat("Fim do jogo!", "\n")
+cat(nome, "Você fez:", pontos, "pontos", "\n")
+
 ```
 
 ```{r}
@@ -106,13 +108,60 @@ for (i in 10) {
   N2 <- sample(1:10,1, replace = T)
   valor = N1*N2
   resposta = cat("Calcule a tabuada de:", N1, "x", N2)
-  if (resposta == valor){
+
+if (resposta == valor){
     pontos = pontos + 1
   return("Parabéns, você acertou!!!")}
+  else{
+    return("Não foi dessa vez, mas não desista")
+  }}
+  
+```
+
+```{r}
+nome = readline("Qual o seu nome?")
+
+tabuada = function()
+{
+  contagem = 0
+  N1<-sample(1:10, 1)
+  N2 <- sample(1:10,1)
+  valor <- N1*N2
+  cat ("Calcule a tabuada de:", N1, "x", N2)
+  resposta <- readline("Digite o seu valor:")
+  if (resposta == valor) {
+    pontos =  contagem +  1
+    return("Parabéns, você acerto")
+  }
+  else {
+    return("Não foi dessa vez")
+  }
+  
+}
+
+tabuada()
+
+
+
+```
+
+```{r}
+pontos <- 0
+for (i in 1:10) {
+  N1<-sample(1:10, 1)
+  N2 <- sample(1:10,1)
+  valor <- N1*N2
+  cat ("Calcule a tabuada de:", N1, "x", N2)
+  resposta =readline("Digite o seu valor:")
+  if (resposta == valor){
+    return("Parabéns, você acertou!!!")
+    pontos <- pontos+1}
   else{
     return("Não foi dessa vez, mas não desista")
   }
   
 }
+cat("Fim do jogo!", "\n")
+Cat("Você fez", pontos, "pontos")
 ```
 
